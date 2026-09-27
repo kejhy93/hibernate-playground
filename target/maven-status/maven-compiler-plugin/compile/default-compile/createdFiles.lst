@@ -1,0 +1,14 @@
+org/hejnaluk/hibernatetest/hibernatetest/repository/BookSummary.class
+org/hejnaluk/hibernatetest/hibernatetest/domain/Review.class
+org/hejnaluk/hibernatetest/hibernatetest/repository/ReviewRepository.class
+org/hejnaluk/hibernatetest/hibernatetest/web/BookController.class
+org/hejnaluk/hibernatetest/hibernatetest/repository/PublisherRepository.class
+org/hejnaluk/hibernatetest/hibernatetest/domain/Author.class
+org/hejnaluk/hibernatetest/hibernatetest/web/BookController$NewReview.class
+org/hejnaluk/hibernatetest/hibernatetest/domain/Book.class
+org/hejnaluk/hibernatetest/hibernatetest/repository/AuthorRepository.class
+org/hejnaluk/hibernatetest/hibernatetest/web/BookDto.class
+org/hejnaluk/hibernatetest/hibernatetest/repository/BookRepository.class
+org/hejnaluk/hibernatetest/hibernatetest/service/LibraryService.class
+org/hejnaluk/hibernatetest/hibernatetest/domain/Publisher.class
+org/hejnaluk/hibernatetest/hibernatetest/domain/Genre.class

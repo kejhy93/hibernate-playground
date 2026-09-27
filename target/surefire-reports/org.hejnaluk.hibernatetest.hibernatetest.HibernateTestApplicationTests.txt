@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.hejnaluk.hibernatetest.hibernatetest.HibernateTestApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.568 s -- in org.hejnaluk.hibernatetest.hibernatetest.HibernateTestApplicationTests

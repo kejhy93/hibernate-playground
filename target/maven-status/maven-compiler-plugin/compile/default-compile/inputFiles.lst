@@ -1,0 +1,14 @@
+/var/home/bazzite-framework-16/IdeaProjects/hibernate-test/src/main/java/org/hejnaluk/hibernatetest/hibernatetest/HibernateTestApplication.java
+/var/home/bazzite-framework-16/IdeaProjects/hibernate-test/src/main/java/org/hejnaluk/hibernatetest/hibernatetest/domain/Author.java
+/var/home/bazzite-framework-16/IdeaProjects/hibernate-test/src/main/java/org/hejnaluk/hibernatetest/hibernatetest/domain/Book.java
+/var/home/bazzite-framework-16/IdeaProjects/hibernate-test/src/main/java/org/hejnaluk/hibernatetest/hibernatetest/domain/Genre.java
+/var/home/bazzite-framework-16/IdeaProjects/hibernate-test/src/main/java/org/hejnaluk/hibernatetest/hibernatetest/domain/Publisher.java
+/var/home/bazzite-framework-16/IdeaProjects/hibernate-test/src/main/java/org/hejnaluk/hibernatetest/hibernatetest/domain/Review.java
+/var/home/bazzite-framework-16/IdeaProjects/hibernate-test/src/main/java/org/hejnaluk/hibernatetest/hibernatetest/repository/AuthorRepository.java
+/var/home/bazzite-framework-16/IdeaProjects/hibernate-test/src/main/java/org/hejnaluk/hibernatetest/hibernatetest/repository/BookRepository.java
+/var/home/bazzite-framework-16/IdeaProjects/hibernate-test/src/main/java/org/hejnaluk/hibernatetest/hibernatetest/repository/BookSummary.java
+/var/home/bazzite-framework-16/IdeaProjects/hibernate-test/src/main/java/org/hejnaluk/hibernatetest/hibernatetest/repository/PublisherRepository.java
+/var/home/bazzite-framework-16/IdeaProjects/hibernate-test/src/main/java/org/hejnaluk/hibernatetest/hibernatetest/repository/ReviewRepository.java
+/var/home/bazzite-framework-16/IdeaProjects/hibernate-test/src/main/java/org/hejnaluk/hibernatetest/hibernatetest/service/LibraryService.java
+/var/home/bazzite-framework-16/IdeaProjects/hibernate-test/src/main/java/org/hejnaluk/hibernatetest/hibernatetest/web/BookController.java
+/var/home/bazzite-framework-16/IdeaProjects/hibernate-test/src/main/java/org/hejnaluk/hibernatetest/hibernatetest/web/BookDto.java

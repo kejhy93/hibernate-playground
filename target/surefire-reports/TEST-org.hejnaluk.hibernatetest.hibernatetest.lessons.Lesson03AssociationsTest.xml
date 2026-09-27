@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="org.hejnaluk.hibernatetest.hibernatetest.lessons.Lesson03AssociationsTest" time="0.132" tests="4" errors="0" skipped="0" failures="0" flakes="0">
+  <properties>
+    <property name="java.specification.version" value="25"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/var/home/bazzite-framework-16/IdeaProjects/hibernate-test/target/test-classes:/var/home/bazzite-framework-16/IdeaProjects/hibernate-test/target/classes:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-starter-data-jpa/4.1.1/spring-boot-starter-data-jpa-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-starter/4.1.1/spring-boot-starter-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-starter-logging/4.1.1/spring-boot-starter-logging-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/ch/qos/logback/logback-classic/1.5.38/logback-classic-1.5.38.jar:/home/bazzite-framework-16/.m2/repository/ch/qos/logback/logback-core/1.5.38/logback-core-1.5.38.jar:/home/bazzite-framework-16/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.25.5/log4j-to-slf4j-2.25.5.jar:/home/bazzite-framework-16/.m2/repository/org/apache/logging/log4j/log4j-api/2.25.5/log4j-api-2.25.5.jar:/home/bazzite-framework-16/.m2/repository/org/slf4j/jul-to-slf4j/2.0.18/jul-to-slf4j-2.0.18.jar:/home/bazzite-framework-16/.m2/repository/jakarta/annotation/jakarta.annotation-api/3.0.0/jakarta.annotation-api-3.0.0.jar:/home/bazzite-framework-16/.m2/repository/org/yaml/snakeyaml/2.6/snakeyaml-2.6.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-starter-jdbc/4.1.1/spring-boot-starter-jdbc-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/com/zaxxer/HikariCP/7.0.2/HikariCP-7.0.2.jar:/home/bazzite-framework-16/.m2/repository/org/slf4j/slf4j-api/2.0.18/slf4j-api-2.0.18.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-data-jpa/4.1.1/spring-boot-data-jpa-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-data-commons/4.1.1/spring-boot-data-commons-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-persistence/4.1.1/spring-boot-persistence-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/data/spring-data-commons/4.1.1/spring-data-commons-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-hibernate/4.1.1/spring-boot-hibernate-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-jpa/4.1.1/spring-boot-jpa-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.2.0/jakarta.persistence-api-3.2.0.jar:/home/bazzite-framework-16/.m2/repository/org/hibernate/orm/hibernate-core/7.4.5.Final/hibernate-core-7.4.5.Final.jar:/home/bazzite-framework-16/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar:/home/bazzite-framework-16/.m2/repository/org/jboss/logging/jboss-logging/3.6.3.Final/jboss-logging-3.6.3.Final.jar:/home/bazzite-framework-16/.m2/repository/org/hibernate/models/hibernate-models/1.1.1/hibernate-models-1.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/glassfish/jaxb/jaxb-runtime/4.0.9/jaxb-runtime-4.0.9.jar:/home/bazzite-framework-16/.m2/repository/org/glassfish/jaxb/jaxb-core/4.0.9/jaxb-core-4.0.9.jar:/home/bazzite-framework-16/.m2/repository/org/eclipse/angus/angus-activation/2.0.3/angus-activation-2.0.3.jar:/home/bazzite-framework-16/.m2/repository/org/glassfish/jaxb/txw2/4.0.9/txw2-4.0.9.jar:/home/bazzite-framework-16/.m2/repository/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.jar:/home/bazzite-framework-16/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/spring-orm/7.0.9/spring-orm-7.0.9.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/data/spring-data-jpa/4.1.1/spring-data-jpa-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/spring-aop/7.0.9/spring-aop-7.0.9.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/spring-tx/7.0.9/spring-tx-7.0.9.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/spring-beans/7.0.9/spring-beans-7.0.9.jar:/home/bazzite-framework-16/.m2/repository/org/antlr/antlr4-runtime/4.13.2/antlr4-runtime-4.13.2.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/spring-aspects/7.0.9/spring-aspects-7.0.9.jar:/home/bazzite-framework-16/.m2/repository/org/aspectj/aspectjweaver/1.9.25.1/aspectjweaver-1.9.25.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-jdbc/4.1.1/spring-boot-jdbc-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-sql/4.1.1/spring-boot-sql-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-transaction/4.1.1/spring-boot-transaction-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/spring-jdbc/7.0.9/spring-jdbc-7.0.9.jar:/home/bazzite-framework-16/.m2/repository/org/postgresql/postgresql/42.7.13/postgresql-42.7.13.jar:/home/bazzite-framework-16/.m2/repository/org/checkerframework/checker-qual/3.55.1/checker-qual-3.55.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-starter-flyway/4.1.1/spring-boot-starter-flyway-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-flyway/4.1.1/spring-boot-flyway-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/flywaydb/flyway-database-postgresql/12.4.0/flyway-database-postgresql-12.4.0.jar:/home/bazzite-framework-16/.m2/repository/org/flywaydb/flyway-core/12.4.0/flyway-core-12.4.0.jar:/home/bazzite-framework-16/.m2/repository/tools/jackson/core/jackson-databind/3.1.5/jackson-databind-3.1.5.jar:/home/bazzite-framework-16/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.21/jackson-annotations-2.21.jar:/home/bazzite-framework-16/.m2/repository/tools/jackson/core/jackson-core/3.1.5/jackson-core-3.1.5.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-starter-webmvc/4.1.1/spring-boot-starter-webmvc-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-starter-jackson/4.1.1/spring-boot-starter-jackson-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-jackson/4.1.1/spring-boot-jackson-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/4.1.1/spring-boot-starter-tomcat-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat-runtime/4.1.1/spring-boot-starter-tomcat-runtime-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/11.0.24/tomcat-embed-core-11.0.24.jar:/home/bazzite-framework-16/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/11.0.24/tomcat-embed-el-11.0.24.jar:/home/bazzite-framework-16/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/11.0.24/tomcat-embed-websocket-11.0.24.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-tomcat/4.1.1/spring-boot-tomcat-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-http-converter/4.1.1/spring-boot-http-converter-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/spring-web/7.0.9/spring-web-7.0.9.jar:/home/bazzite-framework-16/.m2/repository/io/micrometer/micrometer-observation/1.17.1/micrometer-observation-1.17.1.jar:/home/bazzite-framework-16/.m2/repository/io/micrometer/micrometer-commons/1.17.1/micrometer-commons-1.17.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-webmvc/4.1.1/spring-boot-webmvc-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-servlet/4.1.1/spring-boot-servlet-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/spring-webmvc/7.0.9/spring-webmvc-7.0.9.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/spring-expression/7.0.9/spring-expression-7.0.9.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-devtools/4.1.1/spring-boot-devtools-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot/4.1.1/spring-boot-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/spring-core/7.0.9/spring-core-7.0.9.jar:/home/bazzite-framework-16/.m2/repository/commons-logging/commons-logging/1.3.6/commons-logging-1.3.6.jar:/home/bazzite-framework-16/.m2/repository/org/jspecify/jspecify/1.0.1/jspecify-1.0.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/spring-context/7.0.9/spring-context-7.0.9.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/4.1.1/spring-boot-autoconfigure-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-starter-data-jpa-test/4.1.1/spring-boot-starter-data-jpa-test-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-starter-test/4.1.1/spring-boot-starter-test-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-test/4.1.1/spring-boot-test-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/4.1.1/spring-boot-test-autoconfigure-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/com/jayway/jsonpath/json-path/2.10.0/json-path-2.10.0.jar:/home/bazzite-framework-16/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.5/jakarta.xml.bind-api-4.0.5.jar:/home/bazzite-framework-16/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.4/jakarta.activation-api-2.1.4.jar:/home/bazzite-framework-16/.m2/repository/net/minidev/json-smart/2.6.0/json-smart-2.6.0.jar:/home/bazzite-framework-16/.m2/repository/net/minidev/accessors-smart/2.6.0/accessors-smart-2.6.0.jar:/home/bazzite-framework-16/.m2/repository/org/ow2/asm/asm/9.7.1/asm-9.7.1.jar:/home/bazzite-framework-16/.m2/repository/org/assertj/assertj-core/3.27.7/assertj-core-3.27.7.jar:/home/bazzite-framework-16/.m2/repository/net/bytebuddy/byte-buddy/1.18.11/byte-buddy-1.18.11.jar:/home/bazzite-framework-16/.m2/repository/org/awaitility/awaitility/4.3.0/awaitility-4.3.0.jar:/home/bazzite-framework-16/.m2/repository/org/hamcrest/hamcrest/3.0/hamcrest-3.0.jar:/home/bazzite-framework-16/.m2/repository/org/junit/jupiter/junit-jupiter/6.0.3/junit-jupiter-6.0.3.jar:/home/bazzite-framework-16/.m2/repository/org/junit/jupiter/junit-jupiter-api/6.0.3/junit-jupiter-api-6.0.3.jar:/home/bazzite-framework-16/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/bazzite-framework-16/.m2/repository/org/junit/platform/junit-platform-commons/6.0.3/junit-platform-commons-6.0.3.jar:/home/bazzite-framework-16/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/bazzite-framework-16/.m2/repository/org/junit/jupiter/junit-jupiter-params/6.0.3/junit-jupiter-params-6.0.3.jar:/home/bazzite-framework-16/.m2/repository/org/junit/jupiter/junit-jupiter-engine/6.0.3/junit-jupiter-engine-6.0.3.jar:/home/bazzite-framework-16/.m2/repository/org/junit/platform/junit-platform-engine/6.0.3/junit-platform-engine-6.0.3.jar:/home/bazzite-framework-16/.m2/repository/org/mockito/mockito-core/5.23.0/mockito-core-5.23.0.jar:/home/bazzite-framework-16/.m2/repository/net/bytebuddy/byte-buddy-agent/1.18.11/byte-buddy-agent-1.18.11.jar:/home/bazzite-framework-16/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/home/bazzite-framework-16/.m2/repository/org/mockito/mockito-junit-jupiter/5.23.0/mockito-junit-jupiter-5.23.0.jar:/home/bazzite-framework-16/.m2/repository/org/skyscreamer/jsonassert/1.5.3/jsonassert-1.5.3.jar:/home/bazzite-framework-16/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/spring-test/7.0.9/spring-test-7.0.9.jar:/home/bazzite-framework-16/.m2/repository/org/xmlunit/xmlunit-core/2.11.0/xmlunit-core-2.11.0.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-starter-jdbc-test/4.1.1/spring-boot-starter-jdbc-test-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-jdbc-test/4.1.1/spring-boot-jdbc-test-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-data-jpa-test/4.1.1/spring-boot-data-jpa-test-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-jpa-test/4.1.1/spring-boot-jpa-test-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-starter-webmvc-test/4.1.1/spring-boot-starter-webmvc-test-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-starter-jackson-test/4.1.1/spring-boot-starter-jackson-test-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-webmvc-test/4.1.1/spring-boot-webmvc-test-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-web-server/4.1.1/spring-boot-web-server-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-resttestclient/4.1.1/spring-boot-resttestclient-4.1.1.jar:"/>
+    <property name="java.vm.vendor" value="Amazon.com Inc."/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://aws.amazon.com/corretto/"/>
+    <property name="user.timezone" value="Europe/Prague"/>
+    <property name="org.jboss.logging.provider" value="slf4j"/>
+    <property name="os.name" value="Linux"/>
+    <property name="java.vm.specification.version" value="25"/>
+    <property name="APPLICATION_NAME" value="hibernate-test"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.boot.library.path" value="/var/home/bazzite-framework-16/.sdkman/candidates/java/25-amzn/lib"/>
+    <property name="sun.java.command" value="/var/home/bazzite-framework-16/IdeaProjects/hibernate-test/target/surefire/surefirebooter-20260927231427427_3.jar /var/home/bazzite-framework-16/IdeaProjects/hibernate-test/target/surefire 2026-09-27T23-14-27_356-jvmRun1 surefire-20260927231427427_1tmp surefire_0-20260927231427427_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/var/home/bazzite-framework-16/IdeaProjects/hibernate-test/target/test-classes:/var/home/bazzite-framework-16/IdeaProjects/hibernate-test/target/classes:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-starter-data-jpa/4.1.1/spring-boot-starter-data-jpa-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-starter/4.1.1/spring-boot-starter-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-starter-logging/4.1.1/spring-boot-starter-logging-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/ch/qos/logback/logback-classic/1.5.38/logback-classic-1.5.38.jar:/home/bazzite-framework-16/.m2/repository/ch/qos/logback/logback-core/1.5.38/logback-core-1.5.38.jar:/home/bazzite-framework-16/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.25.5/log4j-to-slf4j-2.25.5.jar:/home/bazzite-framework-16/.m2/repository/org/apache/logging/log4j/log4j-api/2.25.5/log4j-api-2.25.5.jar:/home/bazzite-framework-16/.m2/repository/org/slf4j/jul-to-slf4j/2.0.18/jul-to-slf4j-2.0.18.jar:/home/bazzite-framework-16/.m2/repository/jakarta/annotation/jakarta.annotation-api/3.0.0/jakarta.annotation-api-3.0.0.jar:/home/bazzite-framework-16/.m2/repository/org/yaml/snakeyaml/2.6/snakeyaml-2.6.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-starter-jdbc/4.1.1/spring-boot-starter-jdbc-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/com/zaxxer/HikariCP/7.0.2/HikariCP-7.0.2.jar:/home/bazzite-framework-16/.m2/repository/org/slf4j/slf4j-api/2.0.18/slf4j-api-2.0.18.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-data-jpa/4.1.1/spring-boot-data-jpa-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-data-commons/4.1.1/spring-boot-data-commons-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-persistence/4.1.1/spring-boot-persistence-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/data/spring-data-commons/4.1.1/spring-data-commons-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-hibernate/4.1.1/spring-boot-hibernate-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-jpa/4.1.1/spring-boot-jpa-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.2.0/jakarta.persistence-api-3.2.0.jar:/home/bazzite-framework-16/.m2/repository/org/hibernate/orm/hibernate-core/7.4.5.Final/hibernate-core-7.4.5.Final.jar:/home/bazzite-framework-16/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar:/home/bazzite-framework-16/.m2/repository/org/jboss/logging/jboss-logging/3.6.3.Final/jboss-logging-3.6.3.Final.jar:/home/bazzite-framework-16/.m2/repository/org/hibernate/models/hibernate-models/1.1.1/hibernate-models-1.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/glassfish/jaxb/jaxb-runtime/4.0.9/jaxb-runtime-4.0.9.jar:/home/bazzite-framework-16/.m2/repository/org/glassfish/jaxb/jaxb-core/4.0.9/jaxb-core-4.0.9.jar:/home/bazzite-framework-16/.m2/repository/org/eclipse/angus/angus-activation/2.0.3/angus-activation-2.0.3.jar:/home/bazzite-framework-16/.m2/repository/org/glassfish/jaxb/txw2/4.0.9/txw2-4.0.9.jar:/home/bazzite-framework-16/.m2/repository/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.jar:/home/bazzite-framework-16/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/spring-orm/7.0.9/spring-orm-7.0.9.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/data/spring-data-jpa/4.1.1/spring-data-jpa-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/spring-aop/7.0.9/spring-aop-7.0.9.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/spring-tx/7.0.9/spring-tx-7.0.9.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/spring-beans/7.0.9/spring-beans-7.0.9.jar:/home/bazzite-framework-16/.m2/repository/org/antlr/antlr4-runtime/4.13.2/antlr4-runtime-4.13.2.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/spring-aspects/7.0.9/spring-aspects-7.0.9.jar:/home/bazzite-framework-16/.m2/repository/org/aspectj/aspectjweaver/1.9.25.1/aspectjweaver-1.9.25.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-jdbc/4.1.1/spring-boot-jdbc-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-sql/4.1.1/spring-boot-sql-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-transaction/4.1.1/spring-boot-transaction-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/spring-jdbc/7.0.9/spring-jdbc-7.0.9.jar:/home/bazzite-framework-16/.m2/repository/org/postgresql/postgresql/42.7.13/postgresql-42.7.13.jar:/home/bazzite-framework-16/.m2/repository/org/checkerframework/checker-qual/3.55.1/checker-qual-3.55.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-starter-flyway/4.1.1/spring-boot-starter-flyway-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-flyway/4.1.1/spring-boot-flyway-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/flywaydb/flyway-database-postgresql/12.4.0/flyway-database-postgresql-12.4.0.jar:/home/bazzite-framework-16/.m2/repository/org/flywaydb/flyway-core/12.4.0/flyway-core-12.4.0.jar:/home/bazzite-framework-16/.m2/repository/tools/jackson/core/jackson-databind/3.1.5/jackson-databind-3.1.5.jar:/home/bazzite-framework-16/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.21/jackson-annotations-2.21.jar:/home/bazzite-framework-16/.m2/repository/tools/jackson/core/jackson-core/3.1.5/jackson-core-3.1.5.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-starter-webmvc/4.1.1/spring-boot-starter-webmvc-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-starter-jackson/4.1.1/spring-boot-starter-jackson-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-jackson/4.1.1/spring-boot-jackson-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/4.1.1/spring-boot-starter-tomcat-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat-runtime/4.1.1/spring-boot-starter-tomcat-runtime-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/11.0.24/tomcat-embed-core-11.0.24.jar:/home/bazzite-framework-16/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/11.0.24/tomcat-embed-el-11.0.24.jar:/home/bazzite-framework-16/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/11.0.24/tomcat-embed-websocket-11.0.24.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-tomcat/4.1.1/spring-boot-tomcat-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-http-converter/4.1.1/spring-boot-http-converter-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/spring-web/7.0.9/spring-web-7.0.9.jar:/home/bazzite-framework-16/.m2/repository/io/micrometer/micrometer-observation/1.17.1/micrometer-observation-1.17.1.jar:/home/bazzite-framework-16/.m2/repository/io/micrometer/micrometer-commons/1.17.1/micrometer-commons-1.17.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-webmvc/4.1.1/spring-boot-webmvc-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-servlet/4.1.1/spring-boot-servlet-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/spring-webmvc/7.0.9/spring-webmvc-7.0.9.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/spring-expression/7.0.9/spring-expression-7.0.9.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-devtools/4.1.1/spring-boot-devtools-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot/4.1.1/spring-boot-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/spring-core/7.0.9/spring-core-7.0.9.jar:/home/bazzite-framework-16/.m2/repository/commons-logging/commons-logging/1.3.6/commons-logging-1.3.6.jar:/home/bazzite-framework-16/.m2/repository/org/jspecify/jspecify/1.0.1/jspecify-1.0.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/spring-context/7.0.9/spring-context-7.0.9.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/4.1.1/spring-boot-autoconfigure-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-starter-data-jpa-test/4.1.1/spring-boot-starter-data-jpa-test-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-starter-test/4.1.1/spring-boot-starter-test-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-test/4.1.1/spring-boot-test-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/4.1.1/spring-boot-test-autoconfigure-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/com/jayway/jsonpath/json-path/2.10.0/json-path-2.10.0.jar:/home/bazzite-framework-16/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.5/jakarta.xml.bind-api-4.0.5.jar:/home/bazzite-framework-16/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.4/jakarta.activation-api-2.1.4.jar:/home/bazzite-framework-16/.m2/repository/net/minidev/json-smart/2.6.0/json-smart-2.6.0.jar:/home/bazzite-framework-16/.m2/repository/net/minidev/accessors-smart/2.6.0/accessors-smart-2.6.0.jar:/home/bazzite-framework-16/.m2/repository/org/ow2/asm/asm/9.7.1/asm-9.7.1.jar:/home/bazzite-framework-16/.m2/repository/org/assertj/assertj-core/3.27.7/assertj-core-3.27.7.jar:/home/bazzite-framework-16/.m2/repository/net/bytebuddy/byte-buddy/1.18.11/byte-buddy-1.18.11.jar:/home/bazzite-framework-16/.m2/repository/org/awaitility/awaitility/4.3.0/awaitility-4.3.0.jar:/home/bazzite-framework-16/.m2/repository/org/hamcrest/hamcrest/3.0/hamcrest-3.0.jar:/home/bazzite-framework-16/.m2/repository/org/junit/jupiter/junit-jupiter/6.0.3/junit-jupiter-6.0.3.jar:/home/bazzite-framework-16/.m2/repository/org/junit/jupiter/junit-jupiter-api/6.0.3/junit-jupiter-api-6.0.3.jar:/home/bazzite-framework-16/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/bazzite-framework-16/.m2/repository/org/junit/platform/junit-platform-commons/6.0.3/junit-platform-commons-6.0.3.jar:/home/bazzite-framework-16/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/bazzite-framework-16/.m2/repository/org/junit/jupiter/junit-jupiter-params/6.0.3/junit-jupiter-params-6.0.3.jar:/home/bazzite-framework-16/.m2/repository/org/junit/jupiter/junit-jupiter-engine/6.0.3/junit-jupiter-engine-6.0.3.jar:/home/bazzite-framework-16/.m2/repository/org/junit/platform/junit-platform-engine/6.0.3/junit-platform-engine-6.0.3.jar:/home/bazzite-framework-16/.m2/repository/org/mockito/mockito-core/5.23.0/mockito-core-5.23.0.jar:/home/bazzite-framework-16/.m2/repository/net/bytebuddy/byte-buddy-agent/1.18.11/byte-buddy-agent-1.18.11.jar:/home/bazzite-framework-16/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/home/bazzite-framework-16/.m2/repository/org/mockito/mockito-junit-jupiter/5.23.0/mockito-junit-jupiter-5.23.0.jar:/home/bazzite-framework-16/.m2/repository/org/skyscreamer/jsonassert/1.5.3/jsonassert-1.5.3.jar:/home/bazzite-framework-16/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/spring-test/7.0.9/spring-test-7.0.9.jar:/home/bazzite-framework-16/.m2/repository/org/xmlunit/xmlunit-core/2.11.0/xmlunit-core-2.11.0.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-starter-jdbc-test/4.1.1/spring-boot-starter-jdbc-test-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-jdbc-test/4.1.1/spring-boot-jdbc-test-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-data-jpa-test/4.1.1/spring-boot-data-jpa-test-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-jpa-test/4.1.1/spring-boot-jpa-test-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-starter-webmvc-test/4.1.1/spring-boot-starter-webmvc-test-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-starter-jackson-test/4.1.1/spring-boot-starter-jackson-test-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-webmvc-test/4.1.1/spring-boot-webmvc-test-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-web-server/4.1.1/spring-boot-web-server-4.1.1.jar:/home/bazzite-framework-16/.m2/repository/org/springframework/boot/spring-boot-resttestclient/4.1.1/spring-boot-resttestclient-4.1.1.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/home/bazzite-framework-16"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2025-09-16"/>
+    <property name="java.home" value="/var/home/bazzite-framework-16/.sdkman/candidates/java/25-amzn"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/var/home/bazzite-framework-16/IdeaProjects/hibernate-test"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="FILE_LOG_CHARSET" value="UTF-8"/>
+    <property name="java.awt.headless" value="true"/>
+    <property name="surefire.real.class.path" value="/var/home/bazzite-framework-16/IdeaProjects/hibernate-test/target/surefire/surefirebooter-20260927231427427_3.jar"/>
+    <property name="polyglot.engine.WarnInterpreterOnly" value="false"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="25+36-LTS"/>
+    <property name="user.name" value="bazzite-framework-16"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="6.19.11-ogc1.1.fc44.x86_64"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Corretto-25.0.0.36.2"/>
+    <property name="localRepository" value="/home/bazzite-framework-16/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/corretto/corretto-25/issues/"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="com.zaxxer.hikari.pool_number" value="2"/>
+    <property name="java.version" value="25"/>
+    <property name="user.dir" value="/var/home/bazzite-framework-16/IdeaProjects/hibernate-test"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="PID" value="2829374"/>
+    <property name="CONSOLE_LOG_CHARSET" value="UTF-8"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Amazon.com Inc."/>
+    <property name="java.vm.version" value="25+36-LTS"/>
+    <property name="stdin.encoding" value="UTF-8"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="69.0"/>
+    <property name="LOGGED_APPLICATION_NAME" value="[hibernate-test] "/>
+  </properties>
+  <testcase name="orphanRemovalDeletesReviewsRemovedFromTheCollection" classname="org.hejnaluk.hibernatetest.hibernatetest.lessons.Lesson03AssociationsTest" time="0.019">
+    <system-out><![CDATA[2026-09-27T23:14:33.513+02:00  INFO 2829374 --- [hibernate-test] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.hejnaluk.hibernatetest.hibernatetest.lessons.Lesson03AssociationsTest]: Lesson03AssociationsTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-27T23:14:33.521+02:00  INFO 2829374 --- [hibernate-test] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.hejnaluk.hibernatetest.hibernatetest.HibernateTestApplication for test class org.hejnaluk.hibernatetest.hibernatetest.lessons.Lesson03AssociationsTest
+2026-09-27T23:14:33.521+02:00  INFO 2829374 --- [hibernate-test] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.hejnaluk.hibernatetest.hibernatetest.lessons.Lesson03AssociationsTest]: Lesson03AssociationsTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-27T23:14:33.522+02:00  INFO 2829374 --- [hibernate-test] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.hejnaluk.hibernatetest.hibernatetest.lessons.HibernateLesson]: HibernateLesson does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-27T23:14:33.528+02:00  INFO 2829374 --- [hibernate-test] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.hejnaluk.hibernatetest.hibernatetest.HibernateTestApplication for test class org.hejnaluk.hibernatetest.hibernatetest.lessons.Lesson03AssociationsTest
+2026-09-27T23:14:33.534+02:00  INFO 2829374 --- [hibernate-test] [           main] o.h.h.h.l.Lesson03AssociationsTest       : ===== orphanRemovalDeletesReviewsRemovedFromTheCollection() =====
+2026-09-27T23:14:33.535+02:00 DEBUG 2829374 --- [hibernate-test] [           main] org.hibernate.SQL                        : 
+    &amp#27;[34mselect&amp#27;[0m
+        b1_0.id,
+        b1_0.genre,
+        b1_0.isbn,
+        b1_0.price,
+        b1_0.published_on,
+        b1_0.publisher_id,
+        b1_0.title,
+        b1_0.version 
+    &amp#27;[34mfrom&amp#27;[0m
+        book b1_0 
+    &amp#27;[34mwhere&amp#27;[0m
+        b1_0.id=?
+2026-09-27T23:14:33.535+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [1]
+2026-09-27T23:14:33.537+02:00 DEBUG 2829374 --- [hibernate-test] [           main] org.hibernate.SQL                        : 
+    &amp#27;[34mselect&amp#27;[0m
+        r1_0.book_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.created_at,
+        r1_0.rating 
+    &amp#27;[34mfrom&amp#27;[0m
+        review r1_0 
+    &amp#27;[34mwhere&amp#27;[0m
+        r1_0.book_id=?
+2026-09-27T23:14:33.537+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [1]
+2026-09-27T23:14:33.544+02:00 DEBUG 2829374 --- [hibernate-test] [           main] org.hibernate.SQL                        : 
+    /* &amp#27;[34mdelete&amp#27;[0m 
+    &amp#27;[34mfor&amp#27;[0m
+        org.hejnaluk.hibernatetest.hibernatetest.domain.Review */&amp#27;[34mdelete&amp#27;[0m 
+    &amp#27;[34mfrom&amp#27;[0m
+        review 
+    &amp#27;[34mwhere&amp#27;[0m
+        id=?
+2026-09-27T23:14:33.544+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [1]
+2026-09-27T23:14:33.546+02:00 DEBUG 2829374 --- [hibernate-test] [           main] org.hibernate.SQL                        : 
+    &amp#27;[34mselect&amp#27;[0m
+        r1_0.id,
+        r1_0.book_id,
+        r1_0.comment,
+        r1_0.created_at,
+        r1_0.rating 
+    &amp#27;[34mfrom&amp#27;[0m
+        review r1_0 
+    &amp#27;[34mwhere&amp#27;[0m
+        r1_0.id=?
+2026-09-27T23:14:33.546+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [1]
+]]></system-out>
+  </testcase>
+  <testcase name="persistCascadesToReviews" classname="org.hejnaluk.hibernatetest.hibernatetest.lessons.Lesson03AssociationsTest" time="0.014">
+    <system-out><![CDATA[2026-09-27T23:14:33.554+02:00  INFO 2829374 --- [hibernate-test] [           main] o.h.h.h.l.Lesson03AssociationsTest       : ===== persistCascadesToReviews() =====
+2026-09-27T23:14:33.556+02:00 DEBUG 2829374 --- [hibernate-test] [           main] org.hibernate.SQL                        : 
+    &amp#27;[34mselect&amp#27;[0m
+        nextval(&amp#27;[36m'review_seq'&amp#27;[0m)
+2026-09-27T23:14:33.558+02:00 DEBUG 2829374 --- [hibernate-test] [           main] org.hibernate.SQL                        : 
+    /* &amp#27;[34minsert&amp#27;[0m 
+    &amp#27;[34mfor&amp#27;[0m
+        org.hejnaluk.hibernatetest.hibernatetest.domain.Book
+        */&amp#27;[34minsert&amp#27;[0m 
+    &amp#27;[34minto&amp#27;[0m
+        book (genre, isbn, price, published_on, publisher_id, title, version, id) 
+    &amp#27;[34mvalues&amp#27;[0m
+        (?, ?, ?, ?, ?, ?, ?, ?)
+2026-09-27T23:14:33.558+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [TECHNICAL]
+2026-09-27T23:14:33.558+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [978-0321125217]
+2026-09-27T23:14:33.558+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (3:NUMERIC) <- [null]
+2026-09-27T23:14:33.559+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (4:DATE) <- [null]
+2026-09-27T23:14:33.559+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (5:BIGINT) <- [null]
+2026-09-27T23:14:33.559+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [Domain-Driven Design]
+2026-09-27T23:14:33.559+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (7:BIGINT) <- [0]
+2026-09-27T23:14:33.559+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (8:BIGINT) <- [1002]
+2026-09-27T23:14:33.560+02:00 DEBUG 2829374 --- [hibernate-test] [           main] org.hibernate.SQL                        : 
+    /* &amp#27;[34minsert&amp#27;[0m 
+    &amp#27;[34mfor&amp#27;[0m
+        org.hejnaluk.hibernatetest.hibernatetest.domain.Review
+        */&amp#27;[34minsert&amp#27;[0m 
+    &amp#27;[34minto&amp#27;[0m
+        review (book_id, comment, created_at, rating, id) 
+    &amp#27;[34mvalues&amp#27;[0m
+        (?, ?, ?, ?, ?)
+2026-09-27T23:14:33.560+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [1002]
+2026-09-27T23:14:33.560+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [The blue book.]
+2026-09-27T23:14:33.560+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (3:TIMESTAMP) <- [2026-09-27T23:14:33.559387]
+2026-09-27T23:14:33.561+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (4:INTEGER) <- [5]
+2026-09-27T23:14:33.561+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (5:BIGINT) <- [1001]
+2026-09-27T23:14:33.561+02:00 DEBUG 2829374 --- [hibernate-test] [           main] org.hibernate.SQL                        : 
+    /* &amp#27;[34minsert&amp#27;[0m 
+    &amp#27;[34mfor&amp#27;[0m
+        org.hejnaluk.hibernatetest.hibernatetest.domain.Review
+        */&amp#27;[34minsert&amp#27;[0m 
+    &amp#27;[34minto&amp#27;[0m
+        review (book_id, comment, created_at, rating, id) 
+    &amp#27;[34mvalues&amp#27;[0m
+        (?, ?, ?, ?, ?)
+2026-09-27T23:14:33.561+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [1002]
+2026-09-27T23:14:33.561+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [Long, but worth it.]
+2026-09-27T23:14:33.561+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (3:TIMESTAMP) <- [2026-09-27T23:14:33.561555]
+2026-09-27T23:14:33.562+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (4:INTEGER) <- [4]
+2026-09-27T23:14:33.562+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (5:BIGINT) <- [1002]
+]]></system-out>
+  </testcase>
+  <testcase name="removingABookRemovesItsReviewsAndJoinTableRows" classname="org.hejnaluk.hibernatetest.hibernatetest.lessons.Lesson03AssociationsTest" time="0.044">
+    <system-out><![CDATA[2026-09-27T23:14:33.570+02:00  INFO 2829374 --- [hibernate-test] [           main] o.h.h.h.l.Lesson03AssociationsTest       : ===== removingABookRemovesItsReviewsAndJoinTableRows() =====
+2026-09-27T23:14:33.572+02:00 DEBUG 2829374 --- [hibernate-test] [           main] org.hibernate.SQL                        : 
+    &amp#27;[34mselect&amp#27;[0m
+        b1_0.id,
+        b1_0.genre,
+        b1_0.isbn,
+        b1_0.price,
+        b1_0.published_on,
+        b1_0.publisher_id,
+        b1_0.title,
+        b1_0.version 
+    &amp#27;[34mfrom&amp#27;[0m
+        book b1_0 
+    &amp#27;[34mwhere&amp#27;[0m
+        b1_0.id=?
+2026-09-27T23:14:33.573+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [4]
+2026-09-27T23:14:33.575+02:00 DEBUG 2829374 --- [hibernate-test] [           main] org.hibernate.SQL                        : 
+    &amp#27;[34mselect&amp#27;[0m
+        r1_0.book_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.created_at,
+        r1_0.rating 
+    &amp#27;[34mfrom&amp#27;[0m
+        review r1_0 
+    &amp#27;[34mwhere&amp#27;[0m
+        r1_0.book_id=?
+2026-09-27T23:14:33.576+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [4]
+2026-09-27T23:14:33.580+02:00 DEBUG 2829374 --- [hibernate-test] [           main] org.hibernate.SQL                        : 
+    /* one-shot &amp#27;[34mdelete&amp#27;[0m 
+    &amp#27;[34mfor&amp#27;[0m
+        org.hejnaluk.hibernatetest.hibernatetest.domain.Book.authors */&amp#27;[34mdelete&amp#27;[0m 
+    &amp#27;[34mfrom&amp#27;[0m
+        book_author 
+    &amp#27;[34mwhere&amp#27;[0m
+        book_id=?
+2026-09-27T23:14:33.580+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [4]
+2026-09-27T23:14:33.582+02:00 DEBUG 2829374 --- [hibernate-test] [           main] org.hibernate.SQL                        : 
+    /* &amp#27;[34mdelete&amp#27;[0m 
+    &amp#27;[34mfor&amp#27;[0m
+        org.hejnaluk.hibernatetest.hibernatetest.domain.Review */&amp#27;[34mdelete&amp#27;[0m 
+    &amp#27;[34mfrom&amp#27;[0m
+        review 
+    &amp#27;[34mwhere&amp#27;[0m
+        id=?
+2026-09-27T23:14:33.582+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [5]
+2026-09-27T23:14:33.582+02:00 DEBUG 2829374 --- [hibernate-test] [           main] org.hibernate.SQL                        : 
+    /* &amp#27;[34mdelete&amp#27;[0m 
+    &amp#27;[34mfor&amp#27;[0m
+        org.hejnaluk.hibernatetest.hibernatetest.domain.Review */&amp#27;[34mdelete&amp#27;[0m 
+    &amp#27;[34mfrom&amp#27;[0m
+        review 
+    &amp#27;[34mwhere&amp#27;[0m
+        id=?
+2026-09-27T23:14:33.582+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [6]
+2026-09-27T23:14:33.583+02:00 DEBUG 2829374 --- [hibernate-test] [           main] org.hibernate.SQL                        : 
+    /* &amp#27;[34mdelete&amp#27;[0m 
+    &amp#27;[34mfor&amp#27;[0m
+        org.hejnaluk.hibernatetest.hibernatetest.domain.Book */&amp#27;[34mdelete&amp#27;[0m 
+    &amp#27;[34mfrom&amp#27;[0m
+        book 
+    &amp#27;[34mwhere&amp#27;[0m
+        id=? 
+        &amp#27;[34mand&amp#27;[0m version=?
+2026-09-27T23:14:33.583+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [4]
+2026-09-27T23:14:33.583+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (2:BIGINT) <- [0]
+2026-09-27T23:14:33.601+02:00 DEBUG 2829374 --- [hibernate-test] [           main] org.hibernate.SQL                        : 
+    /* &amp#27;[34mdynamic&amp#27;[0m native &amp#27;[34mSQL&amp#27;[0m query */ &amp#27;[34mselect&amp#27;[0m
+        count(*) 
+    &amp#27;[34mfrom&amp#27;[0m
+        book_author 
+    &amp#27;[34mwhere&amp#27;[0m
+        book_id = ?
+2026-09-27T23:14:33.601+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [4]
+]]></system-out>
+  </testcase>
+  <testcase name="onlyTheOwningSideIsWrittenToTheDatabase" classname="org.hejnaluk.hibernatetest.hibernatetest.lessons.Lesson03AssociationsTest" time="0.028">
+    <system-out><![CDATA[2026-09-27T23:14:33.614+02:00  INFO 2829374 --- [hibernate-test] [           main] o.h.h.h.l.Lesson03AssociationsTest       : ===== onlyTheOwningSideIsWrittenToTheDatabase() =====
+2026-09-27T23:14:33.616+02:00 DEBUG 2829374 --- [hibernate-test] [           main] org.hibernate.SQL                        : 
+    &amp#27;[34mselect&amp#27;[0m
+        b1_0.id,
+        b1_0.genre,
+        b1_0.isbn,
+        b1_0.price,
+        b1_0.published_on,
+        b1_0.publisher_id,
+        b1_0.title,
+        b1_0.version 
+    &amp#27;[34mfrom&amp#27;[0m
+        book b1_0 
+    &amp#27;[34mwhere&amp#27;[0m
+        b1_0.id=?
+2026-09-27T23:14:33.616+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [7]
+2026-09-27T23:14:33.617+02:00 DEBUG 2829374 --- [hibernate-test] [           main] org.hibernate.SQL                        : 
+    &amp#27;[34mselect&amp#27;[0m
+        a1_0.id,
+        a1_0.birth_year,
+        a1_0.name 
+    &amp#27;[34mfrom&amp#27;[0m
+        author a1_0 
+    &amp#27;[34mwhere&amp#27;[0m
+        a1_0.id=?
+2026-09-27T23:14:33.618+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [3]
+2026-09-27T23:14:33.619+02:00  INFO 2829374 --- [hibernate-test] [           main] o.h.h.h.l.Lesson03AssociationsTest       : ----- changing only the inverse side (Author.books, mappedBy) is ignored
+2026-09-27T23:14:33.620+02:00 DEBUG 2829374 --- [hibernate-test] [           main] org.hibernate.SQL                        : 
+    &amp#27;[34mselect&amp#27;[0m
+        b1_0.author_id,
+        b1_1.id,
+        b1_1.genre,
+        b1_1.isbn,
+        b1_1.price,
+        b1_1.published_on,
+        b1_1.publisher_id,
+        b1_1.title,
+        b1_1.version 
+    &amp#27;[34mfrom&amp#27;[0m
+        book_author b1_0 
+    &amp#27;[34mjoin&amp#27;[0m
+        book b1_1 
+            &amp#27;[34mon&amp#27;[0m b1_1.id=b1_0.book_id 
+    &amp#27;[34mwhere&amp#27;[0m
+        b1_0.author_id=?
+2026-09-27T23:14:33.620+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [3]
+2026-09-27T23:14:33.624+02:00 DEBUG 2829374 --- [hibernate-test] [           main] org.hibernate.SQL                        : 
+    /* &amp#27;[34mdynamic&amp#27;[0m native &amp#27;[34mSQL&amp#27;[0m query */ &amp#27;[34mselect&amp#27;[0m
+        count(*) 
+    &amp#27;[34mfrom&amp#27;[0m
+        book_author 
+    &amp#27;[34mwhere&amp#27;[0m
+        book_id = ?
+2026-09-27T23:14:33.624+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [7]
+2026-09-27T23:14:33.625+02:00  INFO 2829374 --- [hibernate-test] [           main] o.h.h.h.l.Lesson03AssociationsTest       : ----- changing the owning side (Book.authors) inserts into book_author
+2026-09-27T23:14:33.625+02:00 DEBUG 2829374 --- [hibernate-test] [           main] org.hibernate.SQL                        : 
+    &amp#27;[34mselect&amp#27;[0m
+        b1_0.id,
+        b1_0.genre,
+        b1_0.isbn,
+        b1_0.price,
+        b1_0.published_on,
+        b1_0.publisher_id,
+        b1_0.title,
+        b1_0.version 
+    &amp#27;[34mfrom&amp#27;[0m
+        book b1_0 
+    &amp#27;[34mwhere&amp#27;[0m
+        b1_0.id=?
+2026-09-27T23:14:33.625+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [7]
+2026-09-27T23:14:33.626+02:00 DEBUG 2829374 --- [hibernate-test] [           main] org.hibernate.SQL                        : 
+    &amp#27;[34mselect&amp#27;[0m
+        a1_0.id,
+        a1_0.birth_year,
+        a1_0.name 
+    &amp#27;[34mfrom&amp#27;[0m
+        author a1_0 
+    &amp#27;[34mwhere&amp#27;[0m
+        a1_0.id=?
+2026-09-27T23:14:33.627+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [3]
+2026-09-27T23:14:33.628+02:00 DEBUG 2829374 --- [hibernate-test] [           main] org.hibernate.SQL                        : 
+    &amp#27;[34mselect&amp#27;[0m
+        a1_0.book_id,
+        a1_1.id,
+        a1_1.birth_year,
+        a1_1.name 
+    &amp#27;[34mfrom&amp#27;[0m
+        book_author a1_0 
+    &amp#27;[34mjoin&amp#27;[0m
+        author a1_1 
+            &amp#27;[34mon&amp#27;[0m a1_1.id=a1_0.author_id 
+    &amp#27;[34mwhere&amp#27;[0m
+        a1_0.book_id=?
+2026-09-27T23:14:33.628+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [7]
+2026-09-27T23:14:33.629+02:00 DEBUG 2829374 --- [hibernate-test] [           main] org.hibernate.SQL                        : 
+    &amp#27;[34mselect&amp#27;[0m
+        b1_0.author_id,
+        b1_1.id,
+        b1_1.genre,
+        b1_1.isbn,
+        b1_1.price,
+        b1_1.published_on,
+        b1_1.publisher_id,
+        b1_1.title,
+        b1_1.version 
+    &amp#27;[34mfrom&amp#27;[0m
+        book_author b1_0 
+    &amp#27;[34mjoin&amp#27;[0m
+        book b1_1 
+            &amp#27;[34mon&amp#27;[0m b1_1.id=b1_0.book_id 
+    &amp#27;[34mwhere&amp#27;[0m
+        b1_0.author_id=?
+2026-09-27T23:14:33.629+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [3]
+2026-09-27T23:14:33.632+02:00 DEBUG 2829374 --- [hibernate-test] [           main] org.hibernate.SQL                        : 
+    /* forced version &amp#27;[34mincrement&amp#27;[0m 
+&amp#27;[34mfor&amp#27;[0m
+    org.hejnaluk.hibernatetest.hibernatetest.domain.Book */&amp#27;[34mupdate&amp#27;[0m
+        book 
+    &amp#27;[34mset&amp#27;[0m
+        version=? 
+    &amp#27;[34mwhere&amp#27;[0m
+        id=? 
+        &amp#27;[34mand&amp#27;[0m version=?
+2026-09-27T23:14:33.633+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [1]
+2026-09-27T23:14:33.633+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (2:BIGINT) <- [7]
+2026-09-27T23:14:33.633+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (3:BIGINT) <- [0]
+2026-09-27T23:14:33.636+02:00 DEBUG 2829374 --- [hibernate-test] [           main] org.hibernate.SQL                        : 
+    /* &amp#27;[34minsert&amp#27;[0m 
+    &amp#27;[34mfor&amp#27;[0m
+        org.hejnaluk.hibernatetest.hibernatetest.domain.Book.authors
+        */&amp#27;[34minsert&amp#27;[0m 
+    &amp#27;[34minto&amp#27;[0m
+        book_author (book_id, author_id) 
+    &amp#27;[34mvalues&amp#27;[0m
+        (?, ?)
+2026-09-27T23:14:33.636+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [7]
+2026-09-27T23:14:33.636+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (2:BIGINT) <- [3]
+2026-09-27T23:14:33.638+02:00 DEBUG 2829374 --- [hibernate-test] [           main] org.hibernate.SQL                        : 
+    /* &amp#27;[34mdynamic&amp#27;[0m native &amp#27;[34mSQL&amp#27;[0m query */ &amp#27;[34mselect&amp#27;[0m
+        count(*) 
+    &amp#27;[34mfrom&amp#27;[0m
+        book_author 
+    &amp#27;[34mwhere&amp#27;[0m
+        book_id = ?
+2026-09-27T23:14:33.638+02:00 TRACE 2829374 --- [hibernate-test] [           main] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [7]
+]]></system-out>
+  </testcase>
+</testsuite>

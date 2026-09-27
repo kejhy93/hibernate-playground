@@ -1,0 +1,6 @@
+/var/home/bazzite-framework-16/IdeaProjects/hibernate-test/src/test/java/org/hejnaluk/hibernatetest/hibernatetest/HibernateTestApplicationTests.java
+/var/home/bazzite-framework-16/IdeaProjects/hibernate-test/src/test/java/org/hejnaluk/hibernatetest/hibernatetest/lessons/HibernateLesson.java
+/var/home/bazzite-framework-16/IdeaProjects/hibernate-test/src/test/java/org/hejnaluk/hibernatetest/hibernatetest/lessons/Lesson01PersistenceContextTest.java
+/var/home/bazzite-framework-16/IdeaProjects/hibernate-test/src/test/java/org/hejnaluk/hibernatetest/hibernatetest/lessons/Lesson02FetchingTest.java
+/var/home/bazzite-framework-16/IdeaProjects/hibernate-test/src/test/java/org/hejnaluk/hibernatetest/hibernatetest/lessons/Lesson03AssociationsTest.java
+/var/home/bazzite-framework-16/IdeaProjects/hibernate-test/src/test/java/org/hejnaluk/hibernatetest/hibernatetest/lessons/Lesson04LockingAndBulkTest.java

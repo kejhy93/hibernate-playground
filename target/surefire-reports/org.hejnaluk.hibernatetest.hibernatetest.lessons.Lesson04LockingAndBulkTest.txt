@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.hejnaluk.hibernatetest.hibernatetest.lessons.Lesson04LockingAndBulkTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.988 s -- in org.hejnaluk.hibernatetest.hibernatetest.lessons.Lesson04LockingAndBulkTest
