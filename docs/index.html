@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hibernate Playground</title>
+<meta name="description" content="Seven runnable lessons on Hibernate 7 with Spring Boot 4 and Postgres: persistence context, fetching, associations, locking, identity, caching and inheritance.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Hibernate 7 · Spring Boot 4 · Spring Data JPA · PostgreSQL</p>
+    <h1>Hibernate Playground</h1>
+    <p class="lead">
+      A small library domain and seven lessons, each one a JUnit test class. Every test runs real SQL
+      against Postgres and asserts what Hibernate did: how many statements, which ones, and when.
+      Change a mapping, rerun the test, and read the log.
+    </p>
+    <p class="actions">
+      <a class="btn primary" href="#lessons">Browse the lessons</a>
+      <a class="btn" href="https://github.com/kejhy93/hibernate-playground">View on GitHub</a>
+    </p>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Contents">
+  <div class="wrap">
+    <a href="#how">How it works</a>
+    <a href="#setup">Setup</a>
+    <a href="#domain">Domain</a>
+    <a href="#lessons">Lessons</a>
+    <a href="#rest">REST</a>
+    <a href="#exercises">Exercises</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<section id="how">
+  <h2>How it works</h2>
+  <div class="grid three">
+    <div class="card">
+      <h3>Real database</h3>
+      <p>Tests use <code>@DataJpaTest</code> against the Postgres started by <code>./pg.sh</code>, not an embedded DB. Flyway builds the schema; Hibernate only validates it.</p>
+    </div>
+    <div class="card">
+      <h3>Rolled back</h3>
+      <p>Each test runs in a transaction that is rolled back at the end, so the seed data never changes. Edit the tests freely.</p>
+    </div>
+    <div class="card">
+      <h3>Measured</h3>
+      <p>The base class <code>HibernateLesson</code> exposes <code>statements()</code> (JDBC statement count), <code>sql()</code> (the SQL text) and <code>flushAndClear()</code>. The second-level cache is emptied before every test.</p>
+    </div>
+  </div>
+  <p>The comments in the tests are the explanation. They walk through each step with the SQL it produces. The console shows every statement with its bind parameters and per-session metrics: statements, JDBC batches, flushes and cache hits. <code>open-in-view</code> is off, so lazy loading outside a transaction fails with an exception.</p>
+</section>
+
+<section id="setup">
+  <h2>Setup</h2>
+<pre><code>./pg.sh start          # Postgres in Podman on localhost:5432
+./mvnw test            # run all lessons
+./mvnw test -Dtest=Lesson02FetchingTest   # or just one
+./mvnw spring-boot:run # start the app and use the REST endpoints
+./pg.sh reset          # wipe the database; Flyway recreates it on next start</code></pre>
+  <p>Migrations live in <code>src/main/resources/db/migration</code>. V1 and V2 create the library, V3 the identity lesson and V4 the inheritance lesson. With <code>ddl-auto=validate</code>, every mapping change needs a migration.</p>
+</section>
+
+<section id="domain">
+  <h2>Domain</h2>
+<pre class="diagram"><code>Publisher 1 ──&lt; Book &gt;── N:M ──&lt; Author     book_author join table, owned by Book.authors
+                 │
+                 └──&lt; Review                cascade ALL + orphanRemoval, owned by Review.book</code></pre>
+  <ul class="facts">
+    <li><strong>Book</strong>: <code>@Version</code> for optimistic locking, <code>@NaturalId</code> isbn, enum stored as string, lazy <code>@ManyToOne</code> publisher, pooled sequence (<code>allocationSize = 50</code>).</li>
+    <li><strong>Publisher</strong>: in the second-level cache (<code>@Cache(READ_WRITE)</code>, Caffeine via JCache).</li>
+    <li><strong>Tag</strong>: <code>IDENTITY</code> id, with an equals/hashCode that is broken on purpose. <strong>Reader</strong>: <code>UUIDv7</code> id, with an equals/hashCode that works with generated ids.</li>
+    <li>Inheritance: <code>Payment</code> (SINGLE_TABLE), <code>LibraryItem</code> (JOINED), <code>Notification</code> (TABLE_PER_CLASS), plus the <code>Money</code> record embeddable and the <code>Auditable</code> mapped superclass.</li>
+  </ul>
+</section>
+
+<section id="lessons">
+  <h2>Lessons</h2>
+  <p class="muted">Source: <code>src/test/java/org/hejnaluk/hibernatetest/hibernatetest/lessons</code>. Each card lists the tests in the class, named by their <code>@DisplayName</code>.</p>
+
+  <article class="lesson" id="l01">
+    <header>
+      <span class="num">01</span>
+      <div>
+        <h3>Persistence context and entity states</h3>
+        <a class="src" href="https://github.com/kejhy93/hibernate-playground/blob/main/src/test/java/org/hejnaluk/hibernatetest/hibernatetest/lessons/Lesson01PersistenceContextTest.java">Lesson01PersistenceContextTest</a>
+      </div>
+    </header>
+    <p>The persistence context is a map from <code>(class, id)</code> to an entity instance, plus a snapshot of the values each entity was loaded with. Most of what Hibernate does follows from that map: fewer SELECTs, dirty checking and delayed writes.</p>
+<pre class="diagram"><code> new Book()         persist()              detach() / clear()
+──────────► TRANSIENT ─────────► MANAGED ─────────────────────► DETACHED
+                      find()/query  ▲                               │
+                                    └──────── merge() (a copy) ─────┘</code></pre>
+    <ul class="tests">
+      <li>First-level cache: finding the same entity twice runs one SELECT and returns the same object</li>
+      <li>Dirty checking: modifying a managed entity is enough, no <code>save()</code> needed</li>
+      <li>Dirty checking compares values: setting the same value does not produce an UPDATE</li>
+      <li>Detached entity: changes are no longer tracked and never reach the database</li>
+      <li><code>merge()</code> copies a detached entity's state onto a managed instance and returns that instance</li>
+      <li><code>persist()</code>: the id is assigned immediately, but the INSERT waits until flush</li>
+      <li>Auto-flush: a query flushes pending changes first so it sees up-to-date data</li>
+    </ul>
+    <p class="takeaway"><strong>Takeaway:</strong> after <code>merge()</code>, keep working with the returned object. The argument stays detached.</p>
+  </article>
+
+  <article class="lesson" id="l02">
+    <header>
+      <span class="num">02</span>
+      <div>
+        <h3>Fetching, lazy loading and the N+1 problem</h3>
+        <a class="src" href="https://github.com/kejhy93/hibernate-playground/blob/main/src/test/java/org/hejnaluk/hibernatetest/hibernatetest/lessons/Lesson02FetchingTest.java">Lesson02FetchingTest</a>
+      </div>
+    </header>
+    <p>Lazy associations are loaded when first touched. That saves work when you don't need the data. When you need it for a whole list, you get N+1: mapping 8 books to DTOs takes <strong>11 statements</strong>. The lesson shows three fixes that each take one statement, then covers proxies and <code>LazyInitializationException</code>.</p>
+    <div class="stat-row">
+      <div class="stat"><span class="value">11</span><span class="label">naive <code>findAll()</code> + DTO mapping</span></div>
+      <div class="stat good"><span class="value">1</span><span class="label">JOIN FETCH</span></div>
+      <div class="stat good"><span class="value">1</span><span class="label"><code>@EntityGraph</code></span></div>
+      <div class="stat good"><span class="value">1</span><span class="label">DTO projection, 0 entities loaded</span></div>
+    </div>
+    <ul class="tests">
+      <li>N+1: one query for the list, then one extra query per lazy association touched</li>
+      <li>Fix 1, JOIN FETCH: load books, publishers and authors in a single query</li>
+      <li>Fix 2, <code>@EntityGraph</code>: the same single query, declared as an annotation on the repository</li>
+      <li>Fix 3, DTO projection: select only the needed columns, no entities are loaded at all</li>
+      <li>Lazy <code>@ManyToOne</code>: you get a proxy that knows only the id, and the SELECT runs on first real use</li>
+      <li><code>getReference()</code> returns a proxy without any SQL; the SELECT runs only if you read its state</li>
+      <li><code>LazyInitializationException</code>: touching an uninitialized association after the session is gone</li>
+    </ul>
+    <p class="takeaway"><strong>Takeaway:</strong> load what you need while the session is open. Setting <code>open-in-view</code> or making associations EAGER hides the problem and brings N+1 back.</p>
+  </article>
+
+  <article class="lesson" id="l03">
+    <header>
+      <span class="num">03</span>
+      <div>
+        <h3>Associations: owning side, cascading and orphan removal</h3>
+        <a class="src" href="https://github.com/kejhy93/hibernate-playground/blob/main/src/test/java/org/hejnaluk/hibernatetest/hibernatetest/lessons/Lesson03AssociationsTest.java">Lesson03AssociationsTest</a>
+      </div>
+    </header>
+    <p>A bidirectional association has two Java fields but one database representation. The <em>owning</em> side (without <code>mappedBy</code>) is what gets written. The <em>inverse</em> side is a read-only mirror. Cascading is a separate concept: it decides which <code>EntityManager</code> operations are passed on from parent to child.</p>
+    <table>
+      <thead><tr><th>Field</th><th>Side</th><th>Database</th></tr></thead>
+      <tbody>
+        <tr><td><code>Review.book</code></td><td>owning</td><td><code>review.book_id</code></td></tr>
+        <tr><td><code>Book.authors</code></td><td>owning</td><td><code>book_author</code> join table</td></tr>
+        <tr><td><code>Book.reviews</code></td><td>inverse (<code>mappedBy = "book"</code>)</td><td>not written</td></tr>
+        <tr><td><code>Author.books</code></td><td>inverse (<code>mappedBy = "authors"</code>)</td><td>not written</td></tr>
+      </tbody>
+    </table>
+    <ul class="tests">
+      <li>Cascade PERSIST: persisting a book also persists the new reviews in its collection</li>
+      <li><code>orphanRemoval</code>: a review removed from the book's collection is deleted from the database</li>
+      <li>Owning side: only changes to <code>Book.authors</code> are written, and <code>Author.books</code> (<code>mappedBy</code>) is ignored</li>
+      <li>Cascade REMOVE: deleting a book deletes its reviews and join table rows, but not its authors</li>
+    </ul>
+    <p class="takeaway"><strong>Takeaway:</strong> never put <code>CascadeType.REMOVE</code> (or <code>ALL</code>) on a <code>@ManyToMany</code>. Deleting one book would delete co-authors of other books.</p>
+  </article>
+
+  <article class="lesson" id="l04">
+    <header>
+      <span class="num">04</span>
+      <div>
+        <h3>Optimistic locking, bulk updates and JDBC batching</h3>
+        <a class="src" href="https://github.com/kejhy93/hibernate-playground/blob/main/src/test/java/org/hejnaluk/hibernatetest/hibernatetest/lessons/Lesson04LockingAndBulkTest.java">Lesson04LockingAndBulkTest</a>
+      </div>
+    </header>
+    <p>Every UPDATE on <code>Book</code> checks the version it read. A stale copy is rejected instead of silently overwriting someone else's change:</p>
+<pre><code>UPDATE book SET ..., version = 1 WHERE id = ? AND version = 0</code></pre>
+    <p>The lesson also covers two ways to change many rows at once. They behave very differently from the entity-by-entity approach.</p>
+    <ul class="tests">
+      <li>Optimistic locking: merging an entity with an outdated <code>@Version</code> throws <code>OptimisticLockException</code></li>
+      <li>Bulk update: one SQL UPDATE for many rows, bypassing the persistence context and <code>@Version</code></li>
+      <li>JDBC batching: 45 INSERTs are sent to the database in 3 round-trips instead of 45</li>
+    </ul>
+    <p class="takeaway"><strong>Takeaway:</strong> a bulk update leaves managed entities stale. A later flush can write the old values back. Use <code>clearAutomatically</code> or <code>refresh()</code>, or run bulk operations first.</p>
+  </article>
+
+  <article class="lesson" id="l05">
+    <header>
+      <span class="num">05</span>
+      <div>
+        <h3>Entity identity, equals/hashCode and id generation</h3>
+        <a class="src" href="https://github.com/kejhy93/hibernate-playground/blob/main/src/test/java/org/hejnaluk/hibernatetest/hibernatetest/lessons/Lesson05IdentityTest.java">Lesson05IdentityTest</a>
+      </div>
+    </header>
+    <p>Inside one persistence context, <code>==</code> is enough. Problems appear when instances from different contexts meet (detached entities, proxies, cached copies) or when a new entity goes into a <code>HashSet</code> before it has an id.</p>
+    <table>
+      <thead><tr><th>Entity</th><th>equals/hashCode</th><th>Id strategy</th><th>Verdict</th></tr></thead>
+      <tbody>
+        <tr><td><code>Author</code></td><td>none (<code>Object</code> identity)</td><td>sequence</td><td>fine until contexts mix</td></tr>
+        <tr><td><code>Tag</code></td><td>generated id + <code>getClass()</code></td><td>IDENTITY</td><td class="bad">broken</td></tr>
+        <tr><td><code>Book</code></td><td>natural id (isbn)</td><td>pooled SEQUENCE</td><td class="ok">best, if a business key exists</td></tr>
+        <tr><td><code>Reader</code></td><td>id + <code>instanceof</code>, constant hashCode</td><td>UUIDv7</td><td class="ok">safe for generated ids</td></tr>
+      </tbody>
+    </table>
+    <ul class="tests">
+      <li>No equals override: the same row loaded in two persistence contexts gives two unequal objects</li>
+      <li>Id-based hashCode: <code>persist()</code> assigns the id, the hashCode changes and the entity is lost in a <code>HashSet</code></li>
+      <li><code>getClass()</code> in equals: a Hibernate proxy is a subclass, so equals becomes asymmetric</li>
+      <li>Natural-id equals (<code>Book.isbn</code>): stable in every entity state, before and after persist</li>
+      <li>Generated-id equals done right (<code>Reader</code>): no id means equal only to itself, constant hashCode</li>
+      <li>IDENTITY: <code>persist()</code> runs the INSERT immediately, because only the INSERT produces the id</li>
+      <li>SEQUENCE with pooled optimizer: one sequence call reserves 50 ids, which are handed out from memory</li>
+      <li>UUIDv7: ids are generated in Java and time-ordered, so <code>persist()</code> needs no database round-trip</li>
+    </ul>
+    <p class="takeaway"><strong>Takeaway:</strong> <code>allocationSize</code> must match the sequence's <code>INCREMENT BY</code>. IDENTITY disables insert batching.</p>
+  </article>
+
+  <article class="lesson" id="l06">
+    <header>
+      <span class="num">06</span>
+      <div>
+        <h3>Second-level cache and query cache</h3>
+        <a class="src" href="https://github.com/kejhy93/hibernate-playground/blob/main/src/test/java/org/hejnaluk/hibernatetest/hibernatetest/lessons/Lesson06SecondLevelCacheTest.java">Lesson06SecondLevelCacheTest</a>
+      </div>
+    </header>
+<pre class="diagram"><code>em.find(Publisher.class, 1)
+   │
+   ▼  persistence context   per session, holds entity OBJECTS
+   │ miss
+   ▼  second-level cache    per SessionFactory, holds entity DATA, survives the transaction
+   │ miss
+   ▼  database              SELECT … FROM publisher WHERE id = 1  → put into the cache</code></pre>
+    <p>The second-level cache is shared across sessions and outlives transactions. Entities must opt in. It suits data that is read often and changed rarely. It's a poor fit for data that other applications or SQL scripts change, because the cache can't see those changes.</p>
+    <ul class="tests">
+      <li><code>find()</code> by id: the first session puts the publisher into the cache, and later sessions read it from there</li>
+      <li>Lazy <code>@ManyToOne</code>: initializing a publisher proxy is a load by id, so the N+1 publisher queries become cache hits</li>
+      <li>Queries skip the entity cache: a JPQL query always runs its SQL, even for cached publishers</li>
+      <li>Query cache: a cacheable query's result is reused until a table it reads from changes</li>
+      <li>READ_WRITE: a changed publisher is locked in the cache until commit, then the cache holds the new value</li>
+      <li>Bulk and native updates: Hibernate can't tell which rows changed, so it evicts whole regions</li>
+    </ul>
+    <p class="takeaway"><strong>Takeaway:</strong> a native UPDATE evicts <em>every</em> cache region unless you declare what it touches with <code>addSynchronizedEntityClass</code>.</p>
+  </article>
+
+  <article class="lesson" id="l07">
+    <header>
+      <span class="num">07</span>
+      <div>
+        <h3>Inheritance mapping, embeddables and element collections</h3>
+        <a class="src" href="https://github.com/kejhy93/hibernate-playground/blob/main/src/test/java/org/hejnaluk/hibernatetest/hibernatetest/lessons/Lesson07InheritanceAndEmbeddablesTest.java">Lesson07InheritanceAndEmbeddablesTest</a>
+      </div>
+    </header>
+    <p>There are three hierarchies with the same shape, one per strategy. The main thing to compare is the SQL of a polymorphic query ("give me all payments") against a query for one subclass.</p>
+    <table>
+      <thead><tr><th>Strategy</th><th>Hierarchy</th><th>Polymorphic query</th><th>Use when</th></tr></thead>
+      <tbody>
+        <tr><td>SINGLE_TABLE</td><td><code>Payment</code> ← Card, Cash</td><td>one table, no joins</td><td>subclasses add few columns (default)</td></tr>
+        <tr><td>JOINED</td><td><code>LibraryItem</code> ← Magazine, BoardGame</td><td>LEFT JOIN every subclass table</td><td>subclasses differ a lot and need NOT NULL</td></tr>
+        <tr><td>TABLE_PER_CLASS</td><td><code>Notification</code> ← Email, Sms</td><td>UNION ALL of every table</td><td>you almost never query the root</td></tr>
+        <tr><td><code>@MappedSuperclass</code></td><td><code>Auditable</code></td><td>not possible</td><td>you only want to share the mapping</td></tr>
+      </tbody>
+    </table>
+    <ul class="tests">
+      <li>SINGLE_TABLE: all subclasses in one table, so polymorphic queries need no joins</li>
+      <li>JOINED: a table per class, and polymorphic queries LEFT JOIN every subclass table</li>
+      <li>TABLE_PER_CLASS: a full table per concrete class, and polymorphic queries become UNION ALL</li>
+      <li>Polymorphic <code>find()</code>: loading by the root type returns an instance of the right subclass</li>
+      <li>Embeddable: a value object stored as columns of the owner and compared by value</li>
+      <li><code>@MappedSuperclass</code>: inherited columns in each entity's own table, filled by <code>@CreationTimestamp</code>/<code>@UpdateTimestamp</code></li>
+      <li><code>@ElementCollection</code> as a List: changing one value deletes all rows and re-inserts them</li>
+    </ul>
+    <p class="takeaway"><strong>Takeaway:</strong> a proxy of a root type is not an instance of the subclass. Use <code>Hibernate.unproxy()</code> before checking <code>instanceof</code>.</p>
+  </article>
+</section>
+
+<section id="rest">
+  <h2>REST endpoints</h2>
+  <p>The app exposes the same scenarios over HTTP, so you can watch the SQL log while calling them. These requests <strong>do</strong> change the database.</p>
+<pre><code>curl localhost:8080/books/naive        # N+1: watch the log fill up
+curl localhost:8080/books/fetch-join   # same JSON, one query
+curl localhost:8080/books/summaries    # DTO projection with average rating
+curl localhost:8080/books/1
+curl -X PATCH 'localhost:8080/books/1/price?value=12.50'
+curl -X POST localhost:8080/books/1/reviews -H 'Content-Type: application/json' -d '{"rating":5,"comment":"Great"}'</code></pre>
+  <p class="muted"><code>PATCH</code> returns the <em>old</em> <code>version</code>. The DTO is built before the transaction commits, and the flush (UPDATE and version bump) happens at commit.</p>
+</section>
+
+<section id="exercises">
+  <h2>Exercises</h2>
+  <ol class="exercises">
+    <li>Set <code>hibernate.default_batch_fetch_size=10</code> and rerun <code>nPlusOneQueries</code>. How many statements are there now, and what do the <code>in (...)</code> lists look like?</li>
+    <li>Change <code>Book.authors</code> from <code>Set</code> to <code>List</code> and remove an author. Compare the SQL on <code>book_author</code>.</li>
+    <li>Remove <code>fetch = LAZY</code> from <code>Book.publisher</code>. Which assertions break, and why?</li>
+    <li>Switch <code>Book</code> to <code>IDENTITY</code> (needs a migration). What happens to the batching and persist tests?</li>
+    <li>Turn <code>open-in-view</code> back on and make <code>/books/naive</code> return entities. What changes?</li>
+    <li>Add <code>@BatchSize(size = 10)</code> to <code>Book.reviews</code> and write a test that loads all books and their reviews.</li>
+    <li>Give <code>Tag</code> the same equals/hashCode as <code>Reader</code>. Which assertions now fail, and why is that good?</li>
+    <li>Change <code>Publisher</code>'s cache to <code>READ_ONLY</code>, then <code>NONSTRICT_READ_WRITE</code>, and rerun <code>readWriteLocksTheEntryUntilCommit</code>.</li>
+    <li>Change <code>LibraryItem.keywords</code> to a <code>Set</code> and rerun the element collection test. Then try <code>@OrderColumn</code>.</li>
+    <li>Add a third subclass to <code>LibraryItem</code> and <code>Notification</code>. How does the polymorphic SQL grow?</li>
+  </ol>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Hibernate Playground · <a href="https://github.com/kejhy93/hibernate-playground">github.com/kejhy93/hibernate-playground</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
